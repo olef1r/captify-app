@@ -4,7 +4,6 @@ export  async function getItems(req, res) {
   try {
     let resu = await itemService.getItems();
     resu = getValues(resu);
-   
     res.json(resu)
   } catch (e) {
     console.error(e)

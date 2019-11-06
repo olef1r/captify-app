@@ -19,10 +19,9 @@ const useStyles = makeStyles({
 
 
 
-export default function SimpleTable({rows}) {
+export default function SimpleTable({rows, tech}) {
   const classes = useStyles();
   
-  //const { rows } = this.props
   return (
     <Paper className={classes.root}>
       <Table className={classes.table} aria-label="simple table">

@@ -1,35 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+
 import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
 import SimpleTable from './components/Table';
 import Button from './components/Button';
-import { func } from 'prop-types';
+import  TextField from './components/TextField';
+import { valueSelector } from './selectors/value.selectors';
+import { loadValue } from './actions/value-action'
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
-function handleClick() {
-  console.log("!!!")
-}
-
-function App() {
+function App({value, loadValue}) {
+  console.log("v", value)
   return (
     <div className="App">
       <Header />
-      <SimpleTable rows={rows}/>
-      <Button onClick={handleClick} / >
+      <SimpleTable rows={rows} />
+
+        <TextField onChange = {loadValue}/>
+        <Button/ >
+     
       <Footer />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  value: valueSelector(state)
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({ loadValue }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

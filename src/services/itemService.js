@@ -1,25 +1,15 @@
-import * as fs from 'async-file';
+import Sequelize from 'sequelize';
+import config from './config';
+import { Items } from '../models';
 
-async function getItems() {
-  try {
-    const res =  await fs.readFile('/home/anastasiia/Documents/captify/src/data.json');
-    //console.log(res.toString())
-    return res.toString();
-  } catch (error) {
-    console.error(error)
-  }
-};
+export const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
-async function insertItem(value) {
-  try {
-    const res =  await fs.appendFile('/home/anastasiia/Documents/captify/src/data.json', value);
-    console.log(res)
-  } catch (error) {
-    console.error(error)
-  }
-};
-
-export default {
-  getItems,
-  insertItem
+async function insert(model) {
+  return Items.create(model);
 }
+
+async function getAll() {
+  return Items.findAll();
+}
+
+export default { insert, getAll };

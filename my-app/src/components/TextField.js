@@ -1,50 +1,29 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import { valueSelector } from '../selectors/value.selectors';
-import { connect } from 'react-redux';
+import Container from '@material-ui/core/Container';
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
+const useStyles = makeStyles(() => ({
   textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
+    marginLeft: '44rem',
     width: 200,
   },
 }));
 
-function BasicTextFields({onChange, value }) {
+export default function BasicTextFields({ onChangeValue, value }) {
   const classes = useStyles();
- //const [value, setValue] = React.useState('Controlled');
- const _onConfirm = (e) => {
-   //console.log(e.target.value)
-   onChange(e.target.value)
- }
- console.log('STORE', value)
-
   return (
-    <form className={classes.container} noValidate autoComplete="off">
-      <div>
-        <TextField
-          id="standard-basic"
-          className={classes.textField}
-          label="Standard"
-          margin="normal"
-          onChange={_onConfirm}
-        />
-      </div>
-    </form>
+    <Container maxWidth="xs">
+      <form className={classes.container} noValidate autoComplete="off">
+          <TextField
+            id="standard-basic"
+            className={classes.textField}
+            label="Enter item"
+            margin="normal"
+            onChange={onChangeValue}
+            value={value}
+          />
+      </form>
+    </Container>
   );
 }
-
-const mapStateToProps = state => ({
-  value: valueSelector(state)
-});
-
-
-export default connect(
-  mapStateToProps
-)(BasicTextFields);

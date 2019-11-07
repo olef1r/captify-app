@@ -6,40 +6,44 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Container from '@material-ui/core/Container';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
+  toolbar: {
+    borderBottom: `1px solid ${theme.palette.divider}`,
+  },
+  container: {
+    marginBottom: '29px',
+    marginTop: '29px'
+  },
   root: {
-    width: '100%',
     overflowX: 'auto',
-  },
-  table: {
-    minWidth: 650,
-  },
-});
+    marginBottom: '16px'
+  }
+}));
 
-
-
-export default function SimpleTable({rows, tech}) {
+export default function SimpleTable({ rows }) {
   const classes = useStyles();
-  
   return (
+    <Container maxWidth='xs' className={classes.container}>
     <Paper className={classes.root}>
-      <Table className={classes.table} aria-label="simple table">
+      <Table  aria-label="simple table" >
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
+            <TableCell align="center" >Items</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
+          {rows.map((row, i)=> (
+            <TableRow key={i}>
+              <TableCell align="center" variant="body" component="th" scope="row">
+                {row}
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </Paper>
+    </Container>
   );
 }

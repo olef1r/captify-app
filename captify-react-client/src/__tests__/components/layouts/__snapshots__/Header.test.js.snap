@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header> - Component renders without crashing 1`] = `
+<WithStyles(ForwardRef(Container))
+  maxWidth="lg"
+>
+  <WithStyles(ForwardRef(Toolbar))
+    className="makeStyles-toolbar-1"
+  >
+    <WithStyles(ForwardRef(Typography))
+      align="center"
+      className="makeStyles-toolbarTitle-2"
+      color="inherit"
+      component="h2"
+      noWrap={true}
+      variant="h5"
+    >
+      There is data from DB
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(Toolbar))>
+</WithStyles(ForwardRef(Container))>
+`;

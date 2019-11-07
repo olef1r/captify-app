@@ -4,7 +4,6 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "db:create": "node_modules/.bin/sequelize db:create; exit 0;",
     "db:migrate": "./node_modules/.bin/babel-node node_modules/sequelize-cli/lib/sequelize db:migrate",
     "db:rollback": "./node_modules/.bin/babel-node node_modules/.bin/sequelize db:migrate:undo",
@@ -12,9 +11,9 @@
     "db:drop": "node_modules/.bin/sequelize db:drop; exit 0",
     "db:migration": "node_modules/.bin/sequelize migration:generate",
     "db:model": "node_modules/.bin/sequelize model:generate",
-    "test:watch": "NODE_ENV=test; npm run db:drop && npm run db:create && npm run db:migrate && nyc mocha --recursive --require babel-core/register --watch",
-    "coverage": "NODE_ENV=test; npm run db:drop && npm run db:create && npm run db:migrate && nyc mocha --recursive --require babel-core/register && nyc report --reporter=html && npm run db:drop",
-    "tests": "nyc mocha --recursive --require babel-core/register"
+    "tests": "nyc mocha --recursive --require babel-core/register",
+    "lint": "eslint src/**/*.js; exit 0",
+    "prettier": "prettier 'src/**/*.{js,json}' --write"
   },
   "bugs": {
     "url": "https://github.com/olef1r/captify-app/issues"
@@ -28,10 +27,18 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-mocha": "^6.2.1",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "helmet": "^3.21.2",
     "i": "^0.3.6",
+    "mocha": "^6.2.2",
     "npm": "^6.13.0",
     "pg": "^7.12.1",
     "sequelize": "^5.21.2",
@@ -39,6 +46,26 @@
     "sinon": "^7.5.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.4"
+    "nodemon": "^1.19.4",
+    "prettier": "^1.18.2"
+  },
+  "eslintConfig": {
+    "plugins": [
+      "mocha"
+    ],
+    "env": {
+      "mocha": true
+    },
+    "rules": {
+      "mocha/no-exclusive-tests": "error",
+      "import/prefer-default-export": "off",
+      "comma-dangle": "off",
+      "wrap-iife": "off",
+      "arrow-parens": "off",
+      "no-unused-expressions": 0
+    },
+    "extends": [
+      "airbnb-base"
+    ]
   }
 }

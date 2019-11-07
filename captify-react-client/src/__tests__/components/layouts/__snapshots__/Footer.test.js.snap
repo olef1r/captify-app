@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer> - Component renders without crashing 1`] = `
+<Fragment>
+  <footer
+    className="makeStyles-footer-4"
+  >
+    <WithStyles(ForwardRef(Container))
+      maxWidth="lg"
+    >
+      <WithStyles(ForwardRef(Typography))
+        align="center"
+        gutterBottom={true}
+        variant="h6"
+      >
+        Footer
+      </WithStyles(ForwardRef(Typography))>
+      <Copyright />
+    </WithStyles(ForwardRef(Container))>
+  </footer>
+</Fragment>
+`;

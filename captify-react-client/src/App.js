@@ -4,7 +4,7 @@ import Footer from './components/layouts/Footer';
 import SimpleTable from './components/Table';
 import Button from './components/Button';
 import TextField from './components/TextField';
-import { postValue, getItems } from './services/bff';
+import { postItem, getItems } from './services/bff';
 import xss from 'xss';
 import { isEmpty } from 'lodash'
 
@@ -37,13 +37,13 @@ class App extends React.Component {
     if (isEmpty(filteredData)) {
       return;
     }
-    postValue({ item: filteredData });
-    this.setState({ update: true, value: '' });
+    postItem({ item: filteredData }).then(() => {
+      this.setState({ update: true, value: '' });
+    });    
   }
    
   render() {   
-    const isLimitExceeded = this.state.data.length < 11 ? false : true;
-    console.log("LI", isLimitExceeded)
+    const isLimitExceeded = this.state.data.length < 10 ? false : true;
     return(
       <div>
         <Header />
@@ -52,6 +52,7 @@ class App extends React.Component {
           <TextField value={this.state.value} onChangeValue={this._onChange} />
           <Button onClick={this._onClick} disabled={isLimitExceeded} isValueEmpty/>
         </div>
+        {isLimitExceeded  ? <p style={{display: "inline"}}>You cannot add more items</p> : null}
         <Footer />
       </div>
     );

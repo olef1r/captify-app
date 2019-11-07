@@ -21,6 +21,7 @@ describe('items - Controller', () => {
         },
         res
       );
+      expect(res.json.calledOnce).to.be.true;
       expect(res.status.args[0][0]).to.equal(201);
     });
     it('should throw an exception if the body is incorrect', async () => {

@@ -7,12 +7,6 @@ const useStyles = makeStyles(theme => ({
   button: {
     marginBottom: '-80px',
     marginLeft: '34rem'
-  },
-  text: {
-    display: 'block',
-    marginTop: '102px',
-    marginLeft: '27rem',
-    color: 'red'
   }
 }));
 
@@ -26,7 +20,6 @@ export default function OutlinedButtons({ onClick, disabled }) {
         className={classes.button}>
         Click
       </Button>
-      {disabled ? <p className={classes.text}>You can add more items</p> : null}
     </Container>
   );
 }

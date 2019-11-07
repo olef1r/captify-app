@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 function startExpress() {
-app.enable('trust proxy');
+  app.enable('trust proxy');
   app.set('port', PORT);
   app.use(helmet());
   app.use((_req, res, next) => {
@@ -19,7 +19,7 @@ app.enable('trust proxy');
     res.header('Content-Security-Policy', 'frame-src *');
     next();
   });
-  app.use(bodyParser.json())
+  app.use(bodyParser.json());
   app.use(routes);
   app.listen(app.get('port'), () => {
     console.log(`Express server listening on port ${app.get('port')}`);
@@ -27,7 +27,7 @@ app.enable('trust proxy');
 }
 
 function onError(err) {
-   console.error('Server not started.');
+  console.error('Server not started.');
   console.error(`Message: ${err.message}`);
 }
 

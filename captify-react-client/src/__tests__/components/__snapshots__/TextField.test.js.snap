@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TextField - Component renders without crashing 1`] = `
+<WithStyles(ForwardRef(Container))
+  maxWidth="xs"
+>
+  <form
+    autoComplete="off"
+    noValidate={true}
+  >
+    <WithStyles(ForwardRef(TextField))
+      className="makeStyles-textField-1"
+      id="standard-basic"
+      label="Enter item"
+      margin="normal"
+    />
+  </form>
+</WithStyles(ForwardRef(Container))>
+`;

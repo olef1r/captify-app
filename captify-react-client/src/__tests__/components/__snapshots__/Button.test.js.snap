@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button> - Component renders without crashing 1`] = `
+<WithStyles(ForwardRef(Container))
+  maxWidth="xs"
+>
+  <WithStyles(ForwardRef(Button))
+    className="makeStyles-button-1"
+    variant="outlined"
+  >
+    Click
+  </WithStyles(ForwardRef(Button))>
+</WithStyles(ForwardRef(Container))>
+`;

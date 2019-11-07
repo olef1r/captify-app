@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App> - Component renders without crashing 1`] = `
+<div>
+  <Blog />
+  <SimpleTable
+    rows={Array []}
+  />
+  <div
+    style={
+      Object {
+        "display": "inline-flex",
+      }
+    }
+  >
+    <BasicTextFields
+      onChangeValue={[Function]}
+      value=""
+    />
+    <OutlinedButtons
+      disabled={false}
+      isValueEmpty={true}
+      onClick={[Function]}
+    />
+  </div>
+  <Blog />
+</div>
+`;
